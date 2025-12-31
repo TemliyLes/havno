@@ -18,6 +18,8 @@
     "eslint": "^9.38.0",
     "nuxt": "^4.2.0",
     "vue": "^3.5.22",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "vue3-pixi": "^1.0.0-beta.6",
+    "vue3-pixi-nuxt": "^1.0.0-beta.6"
   }
 }

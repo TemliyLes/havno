@@ -1,5 +1,5 @@
+<!-- app.vue -->
 <template>
-  <div>
-    <div class="bg-red-300">123</div>
-  </div>
+  <NuxtPage />
 </template>
+<script setup></script>
