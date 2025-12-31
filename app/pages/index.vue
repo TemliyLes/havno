@@ -6,9 +6,9 @@
           :anchor="0.5"
           :x="width / 2"
           :y="height / 2"
-          :style="{ fill: 'white' }"
+          :style="{ fontFamily: 'Oswald', fontSize: 24, fill: 'white' }"
         >
-          Hello NuxtJS World
+          Добро пожаловать в HAVNO
         </text>
       </Application>
     </div>
