@@ -2,23 +2,24 @@
   <client-only>
     <div class="overflow-hidden" v-if="width && height">
       <Application :key="canvasKey" :width="width" :height="height">
-        <text
-          :anchor="0.5"
-          :x="width / 2"
-          :y="height / 2"
-          :style="{ fontFamily: 'Oswald', fontSize: 24, fill: 'white' }"
-        >
-          Добро пожаловать в HAVNO
-        </text>
+        <Intro v-if="isIntro" ref="intro_ref" :width="width" :height="height" />
+        <Game v-if="!isIntro" />
       </Application>
     </div>
   </client-only>
 </template>
 
 <script setup>
+import gsap from "gsap";
+import Game from "~/components/game/screens/Game.vue";
+import Intro from "~/components/game/screens/Intro.vue";
 const width = ref(0);
 const height = ref(0);
 const canvasKey = ref("0x0");
+
+const intro_ref = ref();
+
+const isIntro = ref(true);
 
 const updateSize = () => {
   width.value = window.innerWidth;
@@ -33,5 +34,25 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener("resize", updateSize);
+});
+
+watchEffect(() => {
+  const text = intro_ref.value?.ref_text;
+
+  if (!text) return;
+
+  const tl = gsap.timeline({
+    onComplete: () => {
+      isIntro.value = false;
+    },
+  });
+
+  tl.fromTo(
+    text.scale,
+    { x: 1.5, y: 1.5 },
+    { x: 1, y: 1, duration: 2, ease: "power2.out" }
+  )
+    .to({}, { duration: 1 })
+    .to(text, { alpha: 0, duration: 1, ease: "power1.in" });
 });
 </script>
