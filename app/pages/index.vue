@@ -11,15 +11,15 @@
 
 <script setup>
 import gsap from "gsap";
-import Game from "~/components/game/screens/Game.vue";
-import Intro from "~/components/game/screens/Intro.vue";
+import Game from "~/components/screens/Game.vue";
+import Intro from "~/components/screens/Intro.vue";
 const width = ref(0);
 const height = ref(0);
 const canvasKey = ref("0x0");
 
 const intro_ref = ref();
 
-const isIntro = ref(true);
+const isIntro = ref(false);
 
 const updateSize = () => {
   width.value = window.innerWidth;
