@@ -9,6 +9,7 @@
     <Card x="350" y="100" value="K" suit="♠" />
     <Card x="500" y="100" value="6" suit="♦" />
     <Card x="650" y="100" value="10" suit="♠" />
+    <Card x="650" y="400" value="K" suit="♣" :faceUp="false" />
   </text>
 </template>
 
