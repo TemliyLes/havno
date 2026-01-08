@@ -1,6 +1,5 @@
 <template>
   <Container :x="x" :y="y">
-    <!-- Рубашка карты -->
     <Container v-if="!faceUp && backTexture">
       <Sprite
         ref="backSprite"
@@ -11,7 +10,6 @@
       <Graphics ref="backMask" />
     </Container>
 
-    <!-- Лицевая сторона -->
     <Graphics v-if="faceUp" ref="cardGraphic" />
 
     <template v-if="faceUp">
@@ -73,13 +71,10 @@ const cornerStyle = { fontFamily: "Roboto", fontSize: 24, fill: color };
 const centerStyle = { fontFamily: "Roboto", fontSize: 52, fill: color };
 
 onMounted(async () => {
-  // Загружаем текстуру рубашки
   backTexture.value = await Assets.load("/img/flat.jpg");
 
-  // Ждём, пока Sprite отрендерится
   await nextTick();
 
-  // Маска для скругленных углов рубашки
   const mask = backMask.value;
   const sprite = backSprite.value;
 
@@ -92,7 +87,6 @@ onMounted(async () => {
     sprite.mask = mask;
   }
 
-  // Лицевая сторона карты
   const g = cardGraphic.value;
   if (!g) return;
 
